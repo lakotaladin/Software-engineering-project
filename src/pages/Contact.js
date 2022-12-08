@@ -9,24 +9,15 @@ import kontakt from '../resources/kontaktadmin.png';
 import sponsor1 from '../resources/drzavni.png';
 import sponsor2 from '../resources/novipazar.png';
 import sponsor3 from '../resources/sharpbus.png';
-import { Card } from 'antd';
-// import Loader from '../components/Loader';
+import { Card, Spin } from 'antd';
 
 
 function Contact() {
     const navigate = useNavigate();
     const [scrolled, setScrolled] = useState(false);
-    
-    // const [loading, setLoading] = useEffect(false);
 
-    // useEffect(() => {
-    //     setLoading(true)
-    //     setTimeout(() => {
-    //         setLoading(false)
-    //     }, 5000)
-    // },[]);
+    const [loading, setLoading] = useState(false);
 
-   
     // Za skrol da se pojavi kada krene da se skrola na dnu stranice
     function onScroll() {
         // console.log(window.scrollY)
@@ -42,7 +33,14 @@ function Contact() {
         return () => {
             document.removeEventListener('scroll', onScroll)
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 300)
+    }, []);
 
     // Rutovanje za korisnika 
 
@@ -72,10 +70,15 @@ function Contact() {
     const menuToBeRendered = userMenu;
 
 
-
+    if (loading) {
+        return <div className='spinner-parent'>
+            <Spin size="large" style={{ transform: 'scale(2)' }} />
+        </div>
+    }
 
     return (
-        <>
+        // Glavni div
+        <div className='all-components' >
             {/* Navigacija */}
             <nav className='navigation'>
 
@@ -100,6 +103,7 @@ function Contact() {
                 </div>
 
             </nav>
+
             {/* Glavni div */}
             <div className='global'>
 
@@ -260,9 +264,7 @@ function Contact() {
                     <p>WEBUS &copy; 2022</p>
                 </div>
             </div>
-
-            
-        </>
+        </div>
     )
 }
 

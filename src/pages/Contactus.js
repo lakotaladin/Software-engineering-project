@@ -32,32 +32,12 @@ export const ContactUs = () => {
 
         <form ref={form} onSubmit={sendEmail} layout="vertical">
             <label>Vaše ime i prezime:</label><br />
-            <Input className='forName' type="text" name="user_name" /><br />
+            <Input className='forName' type="text" name="user_name" required /><br />
             <label>Email:</label><br />
-            <Input className='forEmail' prefix={<MailOutlined className="site-form-item-icon" />} type="email" name="user_email" /><br />
+            <Input className='forEmail' placeholder='primer@gmail.com' prefix={<MailOutlined className="site-form-item-icon" />} type="email" name="user_email"  required/><br />
             <label>Pišite nam:</label><br/>
-            <TextArea className='textArea' placeholder='Pitanja, primedbe...' name='message' rows={4} /><br /><br />
+            <TextArea className='textArea' placeholder='Pitanja, primedbe...' name='message' rows={4} required/><br /><br />
             <Input  className='send-message' type="submit" value="Send" />
         </form>
-
-        // <Form
-        //     ref={form}
-        //     onSubmit={sendEmail}
-        //     labelCol={{ span: 4 }}
-        //     wrapperCol={{ span: 14 }}
-        //     layout="vertical"
-        // >
-        //     <Form.Item label="Vaš email:">
-        //         <Input className='forEmail' type='email' name="user_email" prefix={<MailOutlined className="site-form-item-icon" />} />
-        //     </Form.Item>
-
-        //     <Form.Item label="Poruka:">
-        //         <TextArea className='textArea' name='message' rows={4} />
-        //     </Form.Item>
-
-        //     <Form.Item>
-        //         <Input className='send-message' type="submit" value="Pošalji" />
-        //     </Form.Item>
-        // </Form>
     );
 };
